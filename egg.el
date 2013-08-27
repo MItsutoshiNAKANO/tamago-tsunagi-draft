@@ -30,6 +30,11 @@
 
 ;;; Code:
 
+;;; for 24.3 and later
+(if (string< "24.3" emacs-version)
+    (progn
+      (defvaralias 'last-command-char 'last-command-event)))
+
 (defconst egg-version "4.0.6+20020909cvs"
   "Version number for this version of Tamago.")
 
@@ -169,7 +174,7 @@
       (setq egg-modeless-mode t))
     (setq inactivate-current-input-method-function 'egg-mode)
     (setq describe-current-input-method-function 'egg-help)
-    (make-local-hook 'input-method-activate-hook)
+;;;    (make-local-hook 'input-method-activate-hook)
     (add-hook 'input-method-activate-hook 'its-set-mode-line-title nil t)
     (if (eq (selected-window) (minibuffer-window))
 	(add-hook 'minibuffer-exit-hook 'egg-exit-from-minibuffer))

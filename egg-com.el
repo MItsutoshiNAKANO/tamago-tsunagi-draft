@@ -822,7 +822,7 @@ V: Fixed length string (0x00 terminated).  This takes 2 args (data length)."
 	(error "comm-format %s: arguments mismatch" format))
     result))
 
-(defvar comm-accept-timeout nil)
+(defvar comm-accept-timeout 1000)
 
 ;; Assume PROC is bound to the process of current buffer
 ;; Do not move the point, leave it where it was.
